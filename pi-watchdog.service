@@ -1,0 +1,13 @@
+[Unit]
+Description=Pi CI Watchdog
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/usr/bin/python3 /home/pi/watchdog.py --host pve.starbounded.com --user root --password nivaniva --vm-names lux-runner-linux,lux-runner-windows --interval 30
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
